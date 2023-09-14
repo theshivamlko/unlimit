@@ -1,4 +1,6 @@
-part of 'my_home_page_bloc.dart';
+
+import 'package:flutter/material.dart';
+import 'package:unlimit/domain/model/JokeModel.dart';
 
 @immutable
 abstract class MyHomePageState {}

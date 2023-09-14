@@ -1,8 +1,8 @@
 
 
-import 'package:unlimit/domain/JokeModel.dart';
+import 'package:unlimit/domain/model/JokeModel.dart';
 
-import '../data/model/JokesResponse.dart';
+import '../../data/model/JokesResponse.dart';
 
 extension JokesResponseMapper on JokesResponse{
 

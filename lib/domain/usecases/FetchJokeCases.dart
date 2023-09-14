@@ -1,6 +1,6 @@
 import 'package:either_dart/src/either.dart';
 import 'package:unlimit/data/model/ErrorModel.dart';
-import 'package:unlimit/domain/JokeModel.dart';
+import 'package:unlimit/domain/model/JokeModel.dart';
 import 'package:unlimit/domain/usecases/BaseUseCase.dart';
 
 import '../repository/Repository.dart';

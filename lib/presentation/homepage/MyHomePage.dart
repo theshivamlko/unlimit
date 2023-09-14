@@ -3,9 +3,10 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:unlimit/domain/usecases/FetchJokeCases.dart';
+import 'package:unlimit/presentation/homepage/my_home_page_cubit.dart';
+import 'package:unlimit/presentation/homepage/my_home_page_state.dart';
 
-import '../app/Theme.dart';
-import 'my_home_page_bloc.dart';
+import '../../app/Theme.dart';
 
 final getIt = GetIt.instance;
 
@@ -14,30 +15,28 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return BlocProvider(
       create: (context) => MyHomePageBloc.new(fetchJokeCases),
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
           title: Text("JOKES APP"),
+          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.history))],
         ),
         backgroundColor: Colors.white,
-        floatingActionButton: Builder(
-          builder: (context) {
-            return FloatingActionButton(
-                onPressed: () {
-                  context.read<MyHomePageBloc>().refresh();
-                },
-                child: Icon(Icons.refresh));
-          }
-        ),
+        floatingActionButton: Builder(builder: (context) {
+          return FloatingActionButton(
+              onPressed: () {
+                context.read<MyHomePageBloc>().refresh();
+              },
+              child: Icon(Icons.refresh));
+        }),
         body: RefreshIndicator(
           onRefresh: () {
             return context.read<MyHomePageBloc>().refresh();
           },
           child: BlocBuilder<MyHomePageBloc, MyHomePageState>(
-            //    bloc: MyHomePageBloc(fetchJokeCases),
+               bloc: MyHomePageBloc(fetchJokeCases),
             builder: (context, state) {
               print("BlocBuilder $state");
               return Container(

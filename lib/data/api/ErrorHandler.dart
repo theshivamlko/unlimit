@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:unlimit/app/extensions.dart';
 import 'package:unlimit/data/model/ErrorModel.dart';
-import 'package:unlimit/presentation/my_home_page_bloc.dart';
 
 class ResponseError {
   static Map<int, String> errorCodes = {
