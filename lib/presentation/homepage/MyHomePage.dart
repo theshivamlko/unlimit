@@ -31,20 +31,14 @@ class MyHomePage extends StatelessWidget {
               },
               child: Icon(Icons.refresh));
         }),
-        body: RefreshIndicator(
-          onRefresh: () {
-            return context.read<MyHomePageBloc>().refresh();
+        body: BlocBuilder<MyHomePageBloc, MyHomePageState>(
+          builder: (context, state) {
+            print("BlocBuilder $state");
+            return Container(
+                color: Colors.white,
+                width: MediaQuery.of(context).size.width,
+                child: getContent(state));
           },
-          child: BlocBuilder<MyHomePageBloc, MyHomePageState>(
-               bloc: MyHomePageBloc(fetchJokeCases),
-            builder: (context, state) {
-              print("BlocBuilder $state");
-              return Container(
-                  color: Colors.white,
-                  width: MediaQuery.of(context).size.width,
-                  child: getContent(state));
-            },
-          ),
         ),
         // This trailing comma makes auto-formatting nicer for build methods.
       ),

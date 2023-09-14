@@ -1,5 +1,6 @@
 import 'package:either_dart/either.dart';
 import 'package:unlimit/app/extensions.dart';
+import 'package:unlimit/data/localdb/LocalDBRepository.dart';
 import 'package:unlimit/data/model/ErrorModel.dart';
 import 'package:unlimit/data/model/JokesResponse.dart';
 import 'package:unlimit/domain/model/JokeModel.dart';
@@ -11,8 +12,9 @@ import '../../data/data_source/RemoteDataSource.dart';
 
 class RepositoryImpl implements Repository {
   RemoteDataSource remoteDataSource;
+  LocalDBRepository localDBRepository;
 
-  RepositoryImpl(this.remoteDataSource);
+  RepositoryImpl(this.remoteDataSource,this.localDBRepository);
 
   @override
   Future<Either<ErrorModel, JokeModel>> getJoke() async {
@@ -25,6 +27,7 @@ class RepositoryImpl implements Repository {
       print("RepositoryImpl11 ${resposne?.jokeString}");
 
       JokeModel jokeModel = resposne.toDomainModel();
+      localDBRepository.insert(jokeModel);
 
       print("RepositoryImpl1 $jokeModel");
       print("RepositoryImpl2 ${jokeModel.joke}");
@@ -36,5 +39,10 @@ class RepositoryImpl implements Repository {
     }
 
     return either;
+  }
+
+  @override
+  void insertJokeInDB() {
+    // TODO: implement insertJokeInDB
   }
 }

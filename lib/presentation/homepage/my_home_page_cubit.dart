@@ -24,7 +24,6 @@ class MyHomePageBloc extends Cubit<MyHomePageState> {
     print("MyHomePageBloc refresh ");
     emit(ResultLoading());
     fetchJokeCases.execute().fold((left)  {
-
       emit(ResultError(ErrorHandler.handle(left.message).errorModel.message));
     }, (right) {
       emit(ResultData(right));

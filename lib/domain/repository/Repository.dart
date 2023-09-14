@@ -5,4 +5,5 @@ import 'package:unlimit/domain/model/JokeModel.dart';
 
 abstract class Repository {
   Future<Either<ErrorModel, JokeModel>>  getJoke();
+  void insertJokeInDB();
 }
