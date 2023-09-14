@@ -3,10 +3,13 @@ import 'package:json_annotation/json_annotation.dart';
 part 'JokesResponse.g.dart';
 
 @JsonSerializable()
-class JokesResponse{
+class JokesResponse {
   String jokeString;
+
   JokesResponse(this.jokeString);
 
-  factory JokesResponse.fromJson(Map<String, dynamic> json) =>JokesResponse(json["joke"]);
+  factory JokesResponse.fromJson(Map<String, dynamic> json) =>
+      _$JokesResponseFromJson(json);
 
+  Map<String, dynamic> toJson() => _$JokesResponseToJson(this);
 }

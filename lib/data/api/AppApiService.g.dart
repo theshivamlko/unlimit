@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'AppApi.dart';
+part of 'AppApiService.dart';
 
 // **************************************************************************
 // RetrofitGenerator

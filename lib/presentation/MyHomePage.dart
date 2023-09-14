@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
+import 'package:unlimit/domain/usecases/FetchJokeCases.dart';
 
-import 'Theme.dart';
+import '../app/Theme.dart';
 import 'my_home_page_bloc.dart';
 
+final getIt = GetIt.instance;
+
 class MyHomePage extends StatelessWidget {
+  FetchJokeCases fetchJokeCases = getIt.get<FetchJokeCases>();
+
   @override
   Widget build(BuildContext context) {
-    init();
-
-    BlocProvider.of<MyHomePageBloc>(context).getJokes();
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -23,6 +25,7 @@ class MyHomePage extends StatelessWidget {
           return Future(() => null);
         },
         child: BlocBuilder<MyHomePageBloc, MyHomePageState>(
+          bloc: MyHomePageBloc(fetchJokeCases),
           builder: (context, state) {
             return Container(
               color: Colors.green,
@@ -57,6 +60,4 @@ class MyHomePage extends StatelessWidget {
       // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
-
-  void init() {}
 }

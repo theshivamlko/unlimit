@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:unlimit/app/di.dart';
 import 'package:unlimit/presentation/MyHomePage.dart';
 
-void main() {
+void main() async{
+  await inject();
+
   runApp(const MyApp());
 }
 
