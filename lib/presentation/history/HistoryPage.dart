@@ -5,6 +5,8 @@ import 'package:unlimit/domain/usecases/ShowHistoryJokeCases.dart';
 import 'package:unlimit/presentation/history/history_cubit.dart';
 import 'package:unlimit/presentation/homepage/my_home_page_state.dart';
 
+import '../../app/Theme.dart';
+
 final getIt = GetIt.instance;
 
 class HistoryPage extends StatelessWidget {
@@ -51,7 +53,7 @@ class HistoryPage extends StatelessWidget {
               return Card(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text("${result.jokesList[index].joke}"),
+                    child: Text("${result.jokesList[index].joke}",style: heading2,),
                   ),
               margin: EdgeInsets.all(10),);
             });
