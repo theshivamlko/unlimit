@@ -16,7 +16,7 @@ Future<void> inject() async {
   Dio dio = await getIt.get<DioFactory>().getDio();
 
   // API Service
-  getIt.registerSingleton<AppApiService>(AppApiService(dio));
+  getIt.registerLazySingleton<AppApiService>(() => AppApiService(dio));
 
   // Remote Data Source
   getIt.registerFactory<RemoteDataSource>(

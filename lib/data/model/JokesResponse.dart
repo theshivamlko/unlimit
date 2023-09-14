@@ -4,6 +4,8 @@ part 'JokesResponse.g.dart';
 
 @JsonSerializable()
 class JokesResponse {
+
+  @JsonKey(name: "joke")
   String jokeString;
 
   JokesResponse(this.jokeString);

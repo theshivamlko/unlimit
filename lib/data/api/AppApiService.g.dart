@@ -13,7 +13,7 @@ class _AppApiService implements AppApiService {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://geek-jokes.sameerkumar.website/api?format=json';
+    baseUrl ??= 'https://geek-jokes.sameerkumar.website';
   }
 
   final Dio _dio;
@@ -34,7 +34,7 @@ class _AppApiService implements AppApiService {
     )
             .compose(
               _dio.options,
-              '/',
+              '/api?format=json',
               queryParameters: queryParameters,
               data: _data,
             )

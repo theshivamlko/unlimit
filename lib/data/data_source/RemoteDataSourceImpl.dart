@@ -3,19 +3,17 @@ import 'package:unlimit/data/data_source/RemoteDataSource.dart';
 
 import '../model/JokesResponse.dart';
 
-
-
 class RemoteDataSourceImpl implements RemoteDataSource {
   AppApiService appApiService;
 
   RemoteDataSourceImpl(this.appApiService);
 
   @override
-  Future<JokesResponse> getJoke() {
+  Future<JokesResponse> getJoke() async {
     try {
-      return appApiService.getJokesAPI();
+      return await appApiService.getJokesAPI();
     } catch (e) {
-      print("RemoteDataSourceImpl $e");
+      print("RemoteDataSourceImpl error $e");
       rethrow;
     }
   }
