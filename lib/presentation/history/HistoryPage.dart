@@ -16,8 +16,7 @@ class HistoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("HistoryPage ${showHistoryJokeCases}");
-    return BlocProvider<HistoryCubit>(
+     return BlocProvider<HistoryCubit>(
         create: (context) => HistoryCubit(showHistoryJokeCases),
         child: Scaffold(
           appBar: AppBar(
