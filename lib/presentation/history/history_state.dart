@@ -1,5 +1,8 @@
 part of 'history_cubit.dart';
 
+
+/// All state to handle UI on HistoryPage
+
 @immutable
 abstract class HistoryState {}
 

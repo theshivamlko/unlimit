@@ -16,7 +16,11 @@ import 'package:unlimit/domain/usecases/ShowHistoryJokeCases.dart';
 
 final getIt = GetIt.instance;
 
+
+/// Dependency Injection
+
 Future<void> inject() async {
+
   // Local DB
   getIt.registerLazySingleton<HiveDBFactory>(() => HiveDBFactory());
   Box<JokeModel> box = await getIt.get<HiveDBFactory>().getBox();
@@ -32,7 +36,7 @@ Future<void> inject() async {
   getIt.registerFactory<RemoteDataSource>(
       () => RemoteDataSourceImpl(getIt.get<AppApiService>()));
 
-  // Remote Data Source
+  // Local Data Source
   getIt.registerLazySingleton<LocalDBRepository>(
       () => LocalDBRepositoryImpl(box));
 

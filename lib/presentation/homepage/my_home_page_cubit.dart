@@ -8,21 +8,21 @@ import 'package:unlimit/domain/model/JokeModel.dart';
 import 'package:unlimit/domain/usecases/FetchJokeCases.dart';
 
 import 'my_home_page_state.dart';
-import 'my_home_page_state.dart';
 
 
-
+/// Cubit for Home Page, managing state of MyHomePageState
 class MyHomePageBloc extends Cubit<MyHomePageState> {
+
+  /// use case for fetching Joke from API
   late FetchJokeCases fetchJokeCases;
 
   MyHomePageBloc(this.fetchJokeCases) : super(ResultInitial()) {
-    print("MyHomePageBloc super ");
-    refresh();
+     refresh();
   }
 
+  /// Fetch New Joke
   Future<void> refresh() async {
-    print("MyHomePageBloc refresh ");
-    emit(ResultLoading());
+     emit(ResultLoading());
     fetchJokeCases.execute().fold((left)  {
       emit(ResultError(ErrorHandler.handle(left.message).errorModel.message));
     }, (right) {

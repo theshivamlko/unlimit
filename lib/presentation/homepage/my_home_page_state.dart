@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:unlimit/domain/model/JokeModel.dart';
 
+
+/// All state to handle UI on HomePage
 @immutable
 abstract class MyHomePageState {}
 

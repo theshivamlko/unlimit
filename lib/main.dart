@@ -8,6 +8,7 @@ import 'package:unlimit/presentation/homepage/MyHomePage.dart';
 import 'app/AppRoutes.dart';
 
 void main() async {
+
   await init();
   await inject();
 
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+/// Initialize Local DB
 Future init() async {
   await Hive.initFlutter();
 }
