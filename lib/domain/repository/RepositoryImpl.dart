@@ -2,7 +2,6 @@ import 'package:either_dart/either.dart';
 import 'package:unlimit/app/extensions.dart';
 import 'package:unlimit/data/localdb/LocalDBRepository.dart';
 import 'package:unlimit/data/model/ErrorModel.dart';
-import 'package:unlimit/data/model/JokesResponse.dart';
 import 'package:unlimit/domain/model/JokeModel.dart';
 import 'package:unlimit/domain/mapper/mapper.dart';
 import 'package:unlimit/domain/repository/Repository.dart';
@@ -14,7 +13,7 @@ class RepositoryImpl implements Repository {
   RemoteDataSource remoteDataSource;
   LocalDBRepository localDBRepository;
 
-  RepositoryImpl(this.remoteDataSource,this.localDBRepository);
+  RepositoryImpl(this.remoteDataSource, this.localDBRepository);
 
   @override
   Future<Either<ErrorModel, JokeModel>> getJoke() async {
@@ -42,7 +41,17 @@ class RepositoryImpl implements Repository {
   }
 
   @override
-  void insertJokeInDB() {
-    // TODO: implement insertJokeInDB
+  Either<ErrorModel, List<JokeModel>> getAllJokeInDB() {
+    Either<ErrorModel, List<JokeModel>> either =
+        Left(ErrorModel(0, "Something Gone Wrong"));
+    try {
+      List<JokeModel> list = localDBRepository.getAllJokes();
+      print("RepositoryImpl getAllJokeInDB $list");
+      either = Right(list);
+    } catch (e) {
+      print("RepositoryImpl getAllJokeInDB $e");
+      either = Left(ErrorHandler.handle(e).errorModel);
+    }
+    return either;
   }
 }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
+import 'package:unlimit/app/AppRoutes.dart';
 import 'package:unlimit/domain/usecases/FetchJokeCases.dart';
 import 'package:unlimit/presentation/homepage/my_home_page_cubit.dart';
 import 'package:unlimit/presentation/homepage/my_home_page_state.dart';
@@ -21,7 +23,16 @@ class MyHomePage extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           title: Text("JOKES APP"),
-          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.history))],
+          actions: [
+            IconButton(
+                onPressed: () {
+                  GoRouter.of(context).pushNamed(RouteName.historyPage);
+                },
+                icon: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(Icons.history),
+                ))
+          ],
         ),
         backgroundColor: Colors.white,
         floatingActionButton: Builder(builder: (context) {

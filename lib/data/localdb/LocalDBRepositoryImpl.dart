@@ -3,13 +3,13 @@ import 'package:unlimit/data/localdb/LocalDBRepository.dart';
 import 'package:unlimit/domain/model/JokeModel.dart';
 
 class LocalDBRepositoryImpl implements LocalDBRepository {
-  Box hiveBox;
+  Box<JokeModel> hiveBox;
 
   LocalDBRepositoryImpl(this.hiveBox);
 
   @override
   List<JokeModel> getAllJokes() {
-    return [];
+    return hiveBox.values.toList();
   }
 
   @override

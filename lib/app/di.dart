@@ -12,6 +12,7 @@ import 'package:unlimit/domain/model/JokeModel.dart';
 import 'package:unlimit/domain/repository/Repository.dart';
 import 'package:unlimit/domain/repository/RepositoryImpl.dart';
 import 'package:unlimit/domain/usecases/FetchJokeCases.dart';
+import 'package:unlimit/domain/usecases/ShowHistoryJokeCases.dart';
 
 final getIt = GetIt.instance;
 
@@ -39,7 +40,12 @@ Future<void> inject() async {
   getIt.registerFactory<Repository>(() => RepositoryImpl(
       getIt.get<RemoteDataSource>(), getIt.get<LocalDBRepository>()));
 
-  // use case
+  // Fetch Single Joke use case
   getIt.registerFactory<FetchJokeCases>(
       () => FetchJokeCases(getIt.get<Repository>()));
+
+
+  // Fetch All Joke use case
+  getIt.registerFactory<ShowHistoryJokeCases>(
+      () => ShowHistoryJokeCases(getIt.get<Repository>()));
 }

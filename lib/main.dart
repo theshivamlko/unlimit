@@ -5,6 +5,8 @@ import 'package:unlimit/app/Theme.dart';
 import 'package:unlimit/app/di.dart';
 import 'package:unlimit/presentation/homepage/MyHomePage.dart';
 
+import 'app/AppRoutes.dart';
+
 void main() async {
   await init();
   await inject();
@@ -18,13 +20,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
           fontFamily: fontFamily),
-      home: MyHomePage(),
+      routerConfig: goRouter,
     );
   }
 }
