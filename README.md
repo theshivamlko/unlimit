@@ -1,4 +1,5 @@
 # unlimit
+[![Codemagic build status](https://api.codemagic.io/apps/65030046faec0aca089f8cdd/65030046faec0aca089f8cdc/status_badge.svg)](https://codemagic.io/apps/65030046faec0aca089f8cdd/65030046faec0aca089f8cdc/latest_build)
 
 A new Flutter project.
 
