@@ -14,8 +14,6 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(
-        "MyHomePage ${fetchJokeCases} ${fetchJokeCases.repository} ${fetchJokeCases.hashCode}");
 
     return BlocProvider(
       create: (context) => MyHomePageBloc.new(fetchJokeCases),
@@ -25,6 +23,15 @@ class MyHomePage extends StatelessWidget {
           title: Text("JOKES APP"),
         ),
         backgroundColor: Colors.white,
+        floatingActionButton: Builder(
+          builder: (context) {
+            return FloatingActionButton(
+                onPressed: () {
+                  context.read<MyHomePageBloc>().refresh();
+                },
+                child: Icon(Icons.refresh));
+          }
+        ),
         body: RefreshIndicator(
           onRefresh: () {
             return context.read<MyHomePageBloc>().refresh();
@@ -60,7 +67,7 @@ class MyHomePage extends StatelessWidget {
       );
     }
 
-    var result=state as ResultData;
+    var result = state as ResultData;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(

@@ -16,13 +16,14 @@ class MyHomePageBloc extends Cubit<MyHomePageState> {
 
   MyHomePageBloc(this.fetchJokeCases) : super(ResultInitial()) {
     print("MyHomePageBloc super ");
-    emit(ResultLoading());
     refresh();
   }
 
   Future<void> refresh() async {
     print("MyHomePageBloc refresh ");
-    fetchJokeCases.execute().fold((left) {
+    emit(ResultLoading());
+    fetchJokeCases.execute().fold((left)  {
+
       emit(ResultError(ErrorHandler.handle(left.message).errorModel.message));
     }, (right) {
       emit(ResultData(right));
