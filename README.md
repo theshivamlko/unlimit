@@ -1,6 +1,7 @@
 # unlimit
 [![Codemagic build status](https://api.codemagic.io/apps/65030046faec0aca089f8cdd/65030046faec0aca089f8cdc/status_badge.svg)](https://codemagic.io/apps/65030046faec0aca089f8cdd/65030046faec0aca089f8cdc/latest_build)
 
+[BUILD APK](https://api.codemagic.io/artifacts/c5c1a739-edb8-4180-8d50-36a2cb6e210c/b8e6bac1-8466-4ca7-8151-cbcb3c62fb6d/app-debug.apk)
 A new Flutter project.
 
 ## Getting Started
